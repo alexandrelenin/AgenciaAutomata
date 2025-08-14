@@ -15,8 +15,8 @@
 ## Fase 1: MVP - Ingestão e Análise
 - [ ] Workflow N8N: trigger para novo arquivo no Drive, download e chamada do microserviço de processamento.
 - [ ] Microserviço de Processamento:
-    - [ ] Detectar tipo de arquivo (áudio, vídeo, texto, imagem).
-    - [ ] Transcrever áudio/vídeo (Whisper API/local) como serviço separado.
+    - [x] Detectar tipo de arquivo (áudio, vídeo, texto, imagem) (implementado no orquestrador).
+    - [x] Transcrever áudio/vídeo (Whisper API/local) como serviço separado (testado e validado).
     - [x] Dividir transcrição em segmentos/timestamps (documentado no README do microserviço).
     - [ ] Analisar texto com LLM (API/local) como serviço separado.
     - [ ] Gerar embeddings e salvar no ChromaDB (serviço dedicado).
