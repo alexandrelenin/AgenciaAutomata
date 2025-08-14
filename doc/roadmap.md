@@ -17,7 +17,7 @@
 - [ ] Microserviço de Processamento:
     - [ ] Detectar tipo de arquivo (áudio, vídeo, texto, imagem).
     - [ ] Transcrever áudio/vídeo (Whisper API/local) como serviço separado.
-    - [ ] Dividir transcrição em segmentos/timestamps.
+    - [x] Dividir transcrição em segmentos/timestamps (documentado no README do microserviço).
     - [ ] Analisar texto com LLM (API/local) como serviço separado.
     - [ ] Gerar embeddings e salvar no ChromaDB (serviço dedicado).
     - [ ] Para imagens: microserviço de análise multimodal e embeddings.
