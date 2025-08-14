@@ -1,0 +1,11 @@
+# Core
+streamlit
+python-dotenv
+
+# IA & Processamento
+openai
+openai-whisper
+sentence-transformers
+chromadb-client
+ffmpeg-python
+Pillow

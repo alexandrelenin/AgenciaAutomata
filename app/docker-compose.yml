@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n_automata
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - TZ=America/Sao_Paulo
+      - GENERIC_TIMEZONE=America/Sao_Paulo
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+
+  chromadb:
+    image: chromadb/chroma
+    container_name: chroma_automata
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma_data:/chroma/.chroma/
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: app_automata
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    volumes:
+      # Monta o código para permitir desenvolvimento sem precisar reconstruir a imagem
+      - ./app:/workspace/app
+    env_file:
+      - .env
+    command: streamlit run app/src/dashboard.py --server.port 8501 --server.address 0.0.0.0
+    depends_on:
+      - chromadb
