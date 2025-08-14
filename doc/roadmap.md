@@ -4,7 +4,13 @@
 - [x] Dockerfile e docker-compose para todos os serviços (N8N, ChromaDB, App Python).
 - [x] Estrutura de pastas e arquivos.
 - [x] Subir containers e validar acesso aos serviços (N8N, ChromaDB, App Python/Streamlit).
-- [ ] Planejar cada etapa crítica como um microserviço independente (transcrição, análise, vetorização, corte de vídeo, geração de carrossel).
+- [x] Planejar cada etapa crítica como um microserviço independente:
+    - Microserviço de Transcrição (Whisper)
+    - Microserviço de Análise de Texto (LLM)
+    - Microserviço de Vetorização (Embeddings)
+    - Microserviço de Corte de Vídeo (FFmpeg)
+    - Microserviço de Geração de Carrossel (LLM + Imagem)
+    - Microserviço de Análise Multimodal (Imagem)
 
 ## Fase 1: MVP - Ingestão e Análise
 - [ ] Workflow N8N: trigger para novo arquivo no Drive, download e chamada do microserviço de processamento.
