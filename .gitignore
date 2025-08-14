@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Data directories (gerados pelo docker-compose)
+n8n_data/
+chroma_data/
+
+# OS-specific
+.DS_Store
+Thumbs.db
