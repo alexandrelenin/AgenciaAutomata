@@ -11,8 +11,6 @@ services:
       - N8N_PROTOCOL=http
       - TZ=America/Sao_Paulo
       - GENERIC_TIMEZONE=America/Sao_Paulo
-    volumes:
-      - ./n8n_data:/home/node/.n8n
   chromadb:
     image: chromadb/chroma
     container_name: chroma_automata
@@ -34,3 +32,61 @@ services:
     command: streamlit run src/dashboard.py --server.port 8501 --server.address 0.0.0.0
     depends_on:
       - chromadb
+
+  transcription-service:
+    build:
+      context: ../services/transcription
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+
+  text-analysis-service:
+    build:
+      context: ../services/text_analysis
+    ports:
+      - "5002:5002"
+    restart: unless-stopped
+
+  embedding-service:
+    build:
+      context: ../services/embedding
+    ports:
+      - "5003:5003"
+    restart: unless-stopped
+
+  carousel-service:
+    build:
+      context: ../services/carousel
+    ports:
+      - "5004:5004"
+    restart: unless-stopped
+
+  video-cut-service:
+    build:
+      context: ../services/video_cut
+    ports:
+      - "5015:5005"
+    restart: unless-stopped
+
+  multimodal-service:
+    build:
+      context: ../services/multimodal
+    ports:
+      - "5016:5006"
+    restart: unless-stopped
+
+  processing-service:
+    build:
+      context: ../services/processing
+    ports:
+      - "5007:5007"
+    restart: unless-stopped
+    env_file:
+      - ../services/processing/.env
+    depends_on:
+      - transcription-service
+      - text-analysis-service
+      - embedding-service
+      - video-cut-service
+      - carousel-service
+      - multimodal-service
