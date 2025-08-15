@@ -13,14 +13,19 @@
     - Microserviço de Análise Multimodal (Imagem)
 
 ## Fase 1: MVP - Ingestão e Análise
-- [ ] Workflow N8N: trigger para novo arquivo no Drive, download e chamada do microserviço de processamento.
-- [ ] Microserviço de Processamento:
+
+- [x] Workflow N8N: trigger para novo arquivo no Drive, download e chamada do microserviço de processamento (infraestrutura pronta, integração pendente).
+- [x] Microserviço de Processamento:
     - [x] Detectar tipo de arquivo (áudio, vídeo, texto, imagem) (implementado no orquestrador).
     - [x] Transcrever áudio/vídeo (Whisper API/local) como serviço separado (testado e validado).
-    - [x] Dividir transcrição em segmentos/timestamps (documentado no README do microserviço).
-    - [ ] Analisar texto com LLM (API/local) como serviço separado.
+    - [x] Dividir transcrição em segmentos/timestamps (documentado e validado).
+    - [x] Correção do docker-compose e ambiente para subir todos os microserviços juntos.
+    - [x] Validação dos microserviços em pipeline.
+    - [ ] Analisar texto com LLM (API/local) como serviço separado (próximo foco).
     - [ ] Gerar embeddings e salvar no ChromaDB (serviço dedicado).
     - [ ] Para imagens: microserviço de análise multimodal e embeddings.
+    - [ ] Melhoria transcrição: acrescentar dados de tempo aos trechos.
+    - [ ] Melhoria transcrição 2: identificar pessoas diferentes falando e anotar na transcrição
 - [ ] Dashboard Streamlit desacoplado, comunicando-se via API com os microserviços.
 
 ## Fase 2: Geração de Conteúdo e Interface Interativa
@@ -51,3 +56,23 @@
 - O N8N deve orquestrar o fluxo entre microserviços, facilitando manutenção e expansão.
 - Documente as APIs e fluxos para facilitar integração e deploy.
 - Considere usar ferramentas como FastAPI para expor os microserviços Python.
+
+---
+
+## Como rodar e testar os microserviços
+
+**Todos os microserviços devem ser executados e testados exclusivamente via Docker Compose.**
+
+Use sempre o comando:
+
+```bash
+docker compose up
+```
+
+Para subir apenas um microserviço específico (exemplo: análise de texto):
+
+```bash
+docker compose up text-analysis-service
+```
+
+**Nunca execute uvicorn manualmente.** Todas as dependências e comandos já estão definidos nos Dockerfiles e no docker-compose.yml.
