@@ -1,3 +1,7 @@
+
 fastapi
-uvicorn
 openai
+google-cloud-language
+ibm-watson
+cohere
+requests
