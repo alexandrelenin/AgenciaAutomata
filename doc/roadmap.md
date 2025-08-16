@@ -21,12 +21,15 @@
     - [x] Dividir transcrição em segmentos/timestamps (documentado e validado).
     - [x] Correção do docker-compose e ambiente para subir todos os microserviços juntos.
     - [x] Validação dos microserviços em pipeline.
-    - [ ] Analisar texto com LLM (API/local) como serviço separado (próximo foco).
-    - [ ] Gerar embeddings e salvar no ChromaDB (serviço dedicado).
+    - [x] Uso exclusivo de Docker Compose para rodar e testar microserviços.
+    - [x] Remoção do uvicorn dos requirements e dependências.
+    - [x] .env.keys ignorado no versionamento e template seguro criado.
+    - [x] Análise de texto com LLM (API/local) como serviço separado.
+    - [ ] Gerar embeddings e salvar no ChromaDB (serviço dedicado) **[Próxima etapa]**
     - [ ] Para imagens: microserviço de análise multimodal e embeddings.
     - [ ] Melhoria transcrição: acrescentar dados de tempo aos trechos.
     - [ ] Melhoria transcrição 2: identificar pessoas diferentes falando e anotar na transcrição
-- [ ] Dashboard Streamlit desacoplado, comunicando-se via API com os microserviços.
+    - [ ] Dashboard Streamlit desacoplado, comunicando-se via API com os microserviços.
 
 ## Fase 2: Geração de Conteúdo e Interface Interativa
 - [ ] Dashboard: seleção de trechos, checkboxes e botões de ação.

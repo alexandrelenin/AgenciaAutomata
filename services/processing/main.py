@@ -33,10 +33,18 @@ def process_file(file: UploadFile = File(...)):
         text_payload = {"text": result.get("transcription", "")}
         llm_response = requests.post(text_url, json=text_payload)
         llm_result = llm_response.json()
+
+        # Gera embedding via microserviço
+        embedding_url = os.getenv("EMBEDDING_URL", "http://localhost:5003/embed/")
+        embedding_payload = {"text": result.get("transcription", "")}
+        embedding_response = requests.post(embedding_url, json=embedding_payload)
+        embedding_result = embedding_response.json()
+
         return {
             "transcription": result.get("transcription", ""),
             "segments": result.get("segments", []),
-            "llm_analysis": llm_result
+            "llm_analysis": llm_result,
+            "embedding": embedding_result.get("embedding", [])
         }
     elif mime_type.startswith("video"):
         url = MICROSERVICES["video"]
