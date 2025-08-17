@@ -25,7 +25,7 @@
     - [x] Remoção do uvicorn dos requirements e dependências.
     - [x] .env.keys ignorado no versionamento e template seguro criado.
     - [x] Análise de texto com LLM (API/local) como serviço separado.
-    - [ ] Gerar embeddings e salvar no ChromaDB (serviço dedicado) **[Próxima etapa]**
+    - [x] Gerar embeddings e salvar no ChromaDB (serviço dedicado)
     - [ ] Para imagens: microserviço de análise multimodal e embeddings.
     - [ ] Melhoria transcrição: acrescentar dados de tempo aos trechos.
     - [ ] Melhoria transcrição 2: identificar pessoas diferentes falando e anotar na transcrição

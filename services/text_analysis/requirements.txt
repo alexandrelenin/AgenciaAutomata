@@ -1,5 +1,6 @@
 
 fastapi
+uvicorn
 openai
 google-cloud-language
 ibm-watson
